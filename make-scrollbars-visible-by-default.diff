@@ -1,0 +1,23 @@
+diff -Naur gtk+-3.24.8.orig/gtk/gtkscrolledwindow.c gtk+-3.24.8/gtk/gtkscrolledwindow.c
+--- gtk+-3.24.8.orig/gtk/gtkscrolledwindow.c	2019-04-10 21:30:43.000000000 +0200
++++ gtk+-3.24.8/gtk/gtkscrolledwindow.c	2019-04-22 00:08:19.281829850 +0200
+@@ -2147,7 +2147,7 @@
+   priv->max_content_width = -1;
+   priv->max_content_height = -1;
+ 
+-  priv->overlay_scrolling = TRUE;
++  priv->overlay_scrolling = FALSE;
+ 
+   priv->drag_gesture = gtk_gesture_drag_new (widget);
+   gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (priv->drag_gesture), TRUE);
+@@ -4442,8 +4442,8 @@
+ 
+   use_indicators = priv->overlay_scrolling;
+ 
+-  if (g_strcmp0 (g_getenv ("GTK_OVERLAY_SCROLLING"), "0") == 0)
+-    use_indicators = FALSE;
++  if (g_strcmp0 (g_getenv ("GTK_PLEASE_HIDE_MY_SCROLLBARS"), "1") == 0)
++    use_indicators = TRUE;
+ 
+   if (priv->use_indicators != use_indicators)
+     {

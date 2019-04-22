@@ -1,0 +1,22 @@
+diff -Naur gtk+-3.24.8.orig/gtk/gtkwindow.c gtk+-3.24.8/gtk/gtkwindow.c
+--- gtk+-3.24.8.orig/gtk/gtkwindow.c	2019-04-10 21:30:43.000000000 +0200
++++ gtk+-3.24.8/gtk/gtkwindow.c	2019-04-20 14:29:15.995081944 +0200
+@@ -12440,17 +12440,7 @@
+ static void
+ ensure_state_flag_backdrop (GtkWidget *widget)
+ {
+-  GdkWindow *window;
+-  gboolean window_focused = TRUE;
+-
+-  window = _gtk_widget_get_window (widget);
+-
+-  window_focused = gdk_window_get_state (window) & GDK_WINDOW_STATE_FOCUSED;
+-
+-  if (!window_focused)
+-    gtk_widget_set_state_flags (widget, GTK_STATE_FLAG_BACKDROP, FALSE);
+-  else
+-    gtk_widget_unset_state_flags (widget, GTK_STATE_FLAG_BACKDROP);
++  gtk_widget_unset_state_flags (widget, GTK_STATE_FLAG_BACKDROP);
+ }
+ 
+ void
